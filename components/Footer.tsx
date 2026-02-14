@@ -8,8 +8,8 @@ const Footer: React.FC = () => {
         <div className="space-y-8">
           <h3 className="font-serif text-3xl tracking-widest lowercase">Medimoi<span className="text-medimoi-gold">.</span></h3>
           <p className="text-[12px] text-neutral-500 leading-relaxed uppercase tracking-widest">
-            Premier In-Home Healthcare <br />
-            & Wellness Services <br />
+            Connecting You to Trusted <br />
+            Clinics & Wellness Practitioners <br />
             London, United Kingdom
           </p>
         </div>
