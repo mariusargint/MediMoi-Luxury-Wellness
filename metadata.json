@@ -1,0 +1,7 @@
+{
+  "name": "Medimoi - Luxury Wellness & Medical Booking",
+  "description": "A high-end editorial booking platform for at-home wellness and medical treatments, inspired by Ruuby.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

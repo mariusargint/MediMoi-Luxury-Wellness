@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+    <meta name="theme-color" content="#F9F7F2" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="manifest.json" />
+    <title>Medimoi | Wellness, delivered to your door.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              medimoi: {
+                bg: '#F9F7F2',
+                black: '#1A1A1A',
+                gold: '#D4AF37',
+                goldLight: '#E5C158',
+                grey: '#717171'
+              }
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              sans: ['Inter', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @layer base {
+        body {
+          background-color: #F9F7F2;
+          color: #1A1A1A;
+          font-family: 'Inter', sans-serif;
+          overscroll-behavior-y: contain;
+          -webkit-tap-highlight-color: transparent;
+          -webkit-font-smoothing: antialiased;
+        }
+        input, select, textarea {
+          font-size: 16px !important; /* Prevents auto-zoom on iOS */
+        }
+      }
+
+      .font-serif {
+        font-family: 'Playfair Display', serif;
+      }
+
+      /* Safe area insets for modern mobile browsers */
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      .snap-x {
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .snap-center {
+        scroll-snap-align: center;
+      }
+
+      .sheet-overlay {
+        background: rgba(26, 26, 26, 0.4);
+        backdrop-filter: blur(4px);
+      }
+
+      button:active {
+        opacity: 0.7;
+        transform: scale(0.98);
+      }
+
+      /* Custom Leaflet styling */
+      .custom-marker {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .marker-pin {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+      .marker-pin.verified { background-color: #D4AF37; }
+      .marker-pin.pending { background-color: #717171; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.474.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.0.0/",
+    "react/": "https://esm.sh/react@^19.0.0/",
+    "react": "https://esm.sh/react@^19.0.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.0.0",
+    "leaflet": "https://esm.sh/leaflet@^1.9.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
