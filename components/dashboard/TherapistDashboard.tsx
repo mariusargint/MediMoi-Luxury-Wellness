@@ -48,10 +48,10 @@ const TherapistDashboard: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 p-12 overflow-y-auto no-scrollbar bg-medimoi-bg">
-      <header className="mb-16 flex justify-between items-end">
+    <div className="flex-1 p-4 md:p-8 lg:p-12 overflow-y-auto no-scrollbar bg-medimoi-bg">
+      <header className="mb-8 md:mb-16 flex flex-col md:flex-row justify-between md:items-end gap-4">
         <div>
-          <h1 className="font-serif text-5xl italic mb-4">Bonjour, Alexandra.</h1>
+          <h1 className="font-serif text-3xl md:text-5xl italic mb-2 md:mb-4">Bonjour, Alexandra.</h1>
           <p className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">Managing The Mayfair Wellness Suite</p>
         </div>
 
@@ -69,7 +69,7 @@ const TherapistDashboard: React.FC = () => {
       </header>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-16">
         {stats.map((stat, i) => (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -86,52 +86,54 @@ const TherapistDashboard: React.FC = () => {
       </div>
 
       {/* Appointment Queue */}
-      <div className="bg-white border border-medimoi-black/5 p-10">
-        <div className="flex items-center justify-between mb-10 border-b border-neutral-100 pb-8">
-          <h2 className="font-serif text-3xl italic">Upcoming Appointments</h2>
+      <div className="bg-white border border-medimoi-black/5 p-4 md:p-8 lg:p-10">
+        <div className="flex items-center justify-between mb-6 md:mb-10 border-b border-neutral-100 pb-4 md:pb-8">
+          <h2 className="font-serif text-xl md:text-3xl italic">Upcoming Appointments</h2>
           <button className="text-[10px] uppercase tracking-widest font-bold text-medimoi-gold">View Calendar</button>
         </div>
 
         <div className="space-y-6">
           {appointments.map(app => (
-            <div key={app.id} className="flex items-center justify-between p-6 border border-neutral-50 hover:bg-medimoi-bg transition-colors">
-              <div className="flex items-center space-x-8">
-                <div className="w-12 h-12 bg-medimoi-bg flex items-center justify-center font-serif italic text-xl">
+            <div key={app.id} className="flex flex-col md:flex-row md:items-center justify-between p-4 md:p-6 border border-neutral-50 hover:bg-medimoi-bg transition-colors gap-4">
+              <div className="flex items-center space-x-4 md:space-x-8">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-medimoi-bg flex items-center justify-center font-serif italic text-lg md:text-xl shrink-0">
                   {app.clientName[0]}
                 </div>
-                <div>
-                  <h3 className="font-serif text-xl italic">{app.clientName}</h3>
-                  <p className="text-[10px] uppercase tracking-widest text-neutral-400">{app.treatmentName}</p>
+                <div className="min-w-0">
+                  <h3 className="font-serif text-base md:text-xl italic truncate">{app.clientName}</h3>
+                  <p className="text-[10px] uppercase tracking-widest text-neutral-400 truncate">{app.treatmentName}</p>
                 </div>
               </div>
 
-              <div className="text-center">
-                <p className="text-[11px] uppercase tracking-widest text-medimoi-black font-bold">{app.date}</p>
-                <p className="text-[10px] uppercase tracking-widest text-neutral-400">{app.time}</p>
-              </div>
-
-              <div className="text-center hidden md:block">
-                <p className="text-[11px] uppercase tracking-widest text-neutral-400 mb-1">Location</p>
-                <span className="bg-white border border-medimoi-black/10 px-3 py-1 text-[9px] tracking-widest font-bold">{app.postcode}</span>
-              </div>
-
-              <div className="flex items-center space-x-6">
-                <div className="text-right">
-                  <p className="font-serif text-lg mb-1">{formatCurrency(calculateSplit(app.totalPrice).balance)}</p>
-                  <p className="text-[8px] uppercase tracking-widest text-neutral-400">Balance at Clinic</p>
+              <div className="flex items-center justify-between md:contents gap-4">
+                <div className="text-left md:text-center">
+                  <p className="text-[11px] uppercase tracking-widest text-medimoi-black font-bold">{app.date}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-neutral-400">{app.time}</p>
                 </div>
-                {app.status === 'pending' ? (
-                  <button
-                    onClick={() => openConfirmation(app)}
-                    className="px-5 py-2 bg-medimoi-gold text-white text-[9px] uppercase tracking-widest font-bold hover:bg-medimoi-goldLight transition-colors"
-                  >
-                    Accept
-                  </button>
-                ) : (
-                  <span className="px-4 py-2 bg-green-50 text-green-600 border border-green-100 text-[9px] uppercase tracking-widest font-bold">
-                    Confirmed
-                  </span>
-                )}
+
+                <div className="text-center hidden lg:block">
+                  <p className="text-[11px] uppercase tracking-widest text-neutral-400 mb-1">Location</p>
+                  <span className="bg-white border border-medimoi-black/10 px-3 py-1 text-[9px] tracking-widest font-bold">{app.postcode}</span>
+                </div>
+
+                <div className="flex items-center space-x-4 md:space-x-6">
+                  <div className="text-right hidden md:block">
+                    <p className="font-serif text-lg mb-1">{formatCurrency(calculateSplit(app.totalPrice).balance)}</p>
+                    <p className="text-[8px] uppercase tracking-widest text-neutral-400">Balance at Clinic</p>
+                  </div>
+                  {app.status === 'pending' ? (
+                    <button
+                      onClick={() => openConfirmation(app)}
+                      className="px-4 md:px-5 py-2 bg-medimoi-gold text-white text-[9px] uppercase tracking-widest font-bold hover:bg-medimoi-goldLight transition-colors whitespace-nowrap"
+                    >
+                      Accept
+                    </button>
+                  ) : (
+                    <span className="px-3 md:px-4 py-2 bg-green-50 text-green-600 border border-green-100 text-[9px] uppercase tracking-widest font-bold whitespace-nowrap">
+                      Confirmed
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           ))}

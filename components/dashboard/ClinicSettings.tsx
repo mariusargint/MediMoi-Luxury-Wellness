@@ -42,16 +42,16 @@ const ClinicSettings: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 p-12 overflow-y-auto no-scrollbar bg-medimoi-bg">
-      <header className="mb-16">
-        <h1 className="font-serif text-5xl italic mb-4">Clinic Sanctuary.</h1>
+    <div className="flex-1 p-4 md:p-8 lg:p-12 overflow-y-auto no-scrollbar bg-medimoi-bg">
+      <header className="mb-8 md:mb-16">
+        <h1 className="font-serif text-3xl md:text-5xl italic mb-2 md:mb-4">Clinic Sanctuary.</h1>
         <p className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">Managing physical presence and availability</p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
         {/* Left Column: Location Form */}
-        <div className="lg:col-span-2 space-y-12">
-          <section className="bg-white border border-medimoi-black/5 p-10 space-y-10">
+        <div className="lg:col-span-2 space-y-6 md:space-y-12">
+          <section className="bg-white border border-medimoi-black/5 p-4 md:p-8 lg:p-10 space-y-6 md:space-y-10">
             <div className="flex items-center space-x-4 border-b border-neutral-100 pb-6">
               <Building2 className="text-medimoi-gold" size={20} />
               <h2 className="text-[12px] uppercase tracking-[0.3em] font-bold">Clinic Identity</h2>
@@ -81,7 +81,7 @@ const ClinicSettings: React.FC = () => {
           </section>
 
           {/* Availability Grid */}
-          <section className="bg-white border border-medimoi-black/5 p-10 space-y-10">
+          <section className="bg-white border border-medimoi-black/5 p-4 md:p-8 lg:p-10 space-y-6 md:space-y-10">
             <div className="flex items-center space-x-4 border-b border-neutral-100 pb-6">
               <Clock className="text-medimoi-gold" size={20} />
               <h2 className="text-[12px] uppercase tracking-[0.3em] font-bold">Standard Opening Hours</h2>

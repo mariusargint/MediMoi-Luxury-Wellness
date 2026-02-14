@@ -26,15 +26,15 @@ const AdminMapOverview: React.FC = () => {
   ];
 
   return (
-    <div className="flex-1 flex flex-col bg-medimoi-bg h-screen overflow-hidden">
+    <div className="flex-1 flex flex-col bg-medimoi-bg min-h-screen overflow-auto">
       {/* Header */}
-      <header className="p-12 pb-0 flex items-end justify-between">
+      <header className="p-4 md:p-8 lg:p-12 pb-0 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-          <h1 className="font-serif text-5xl italic mb-4">Clinic Cartography.</h1>
+          <h1 className="font-serif text-3xl md:text-5xl italic mb-2 md:mb-4">Clinic Cartography.</h1>
           <p className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">Geographical footprint & market density</p>
         </motion.div>
-        
-        <div className="flex items-center space-x-6">
+
+        <div className="flex items-center space-x-4 md:space-x-6">
           <div className="flex bg-white border border-medimoi-black/5 p-1 shadow-sm">
             <button className="px-4 py-2 bg-medimoi-black text-white text-[9px] uppercase tracking-widest font-bold">Map View</button>
             <button className="px-4 py-2 hover:bg-neutral-50 text-neutral-400 text-[9px] uppercase tracking-widest font-bold">Grid View</button>
@@ -45,13 +45,13 @@ const AdminMapOverview: React.FC = () => {
         </div>
       </header>
 
-      <div className="flex-1 p-12 flex space-x-12 overflow-hidden">
+      <div className="flex-1 p-4 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-6 lg:gap-12 overflow-hidden">
         {/* Left: Interactive Map */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="flex-1 relative group"
+          className="flex-1 relative group min-h-[300px] lg:min-h-0"
         >
           <MapPlaceholder 
             markers={MOCK_MAP_MARKERS} 
@@ -73,7 +73,7 @@ const AdminMapOverview: React.FC = () => {
         </motion.div>
 
         {/* Right: Sidebar Analytics & List */}
-        <div className="w-96 flex flex-col space-y-8 overflow-y-auto no-scrollbar pb-12">
+        <div className="w-full lg:w-96 flex flex-col space-y-6 lg:space-y-8 overflow-y-auto no-scrollbar pb-12 shrink-0">
           
           {/* Active List */}
           <section className="bg-white border border-medimoi-black/5 p-8 space-y-8 shadow-sm">

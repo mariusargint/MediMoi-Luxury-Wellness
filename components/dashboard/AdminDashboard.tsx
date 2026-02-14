@@ -34,21 +34,21 @@ const AdminDashboard: React.FC = () => {
   ];
 
   return (
-    <div className="flex-1 p-12 overflow-y-auto no-scrollbar bg-medimoi-bg">
-      <header className="mb-16">
-        <h1 className="font-serif text-5xl italic mb-4">Revenue Tower.</h1>
+    <div className="flex-1 p-4 md:p-8 lg:p-12 overflow-y-auto no-scrollbar bg-medimoi-bg">
+      <header className="mb-8 md:mb-16">
+        <h1 className="font-serif text-3xl md:text-5xl italic mb-2 md:mb-4">Revenue Tower.</h1>
         <p className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">Medimoi Platform Governance</p>
       </header>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-16">
         {stats.map((stat, i) => (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
             key={stat.label} 
-            className="bg-medimoi-black text-white p-10 border border-white/5 relative overflow-hidden group"
+            className="bg-medimoi-black text-white p-6 md:p-10 border border-white/5 relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-medimoi-gold/10 blur-3xl group-hover:bg-medimoi-gold/20 transition-all" />
             <stat.icon className="text-medimoi-gold mb-8" size={24} />
@@ -61,27 +61,27 @@ const AdminDashboard: React.FC = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
         {/* Verification Queue */}
-        <div className="bg-white border border-medimoi-black/5 p-10">
-          <div className="flex items-center justify-between mb-10 border-b border-neutral-100 pb-8">
-            <h2 className="font-serif text-3xl italic">Verification Queue</h2>
+        <div className="bg-white border border-medimoi-black/5 p-4 md:p-8 lg:p-10">
+          <div className="flex items-center justify-between mb-6 md:mb-10 border-b border-neutral-100 pb-4 md:pb-8">
+            <h2 className="font-serif text-xl md:text-3xl italic">Verification Queue</h2>
             <button className="text-[10px] uppercase tracking-widest font-bold text-medimoi-gold">View All</button>
           </div>
 
           <div className="space-y-6">
             {MOCK_QUEUE.map(app => (
-              <div key={app.id} className="flex items-center justify-between p-6 bg-medimoi-bg border border-medimoi-black/5">
-                <div className="flex items-center space-x-6">
-                  <img src={app.image} className="w-12 h-12 rounded-full object-cover grayscale" alt="" />
-                  <div>
-                    <h3 className="font-serif text-xl italic">{app.clinicName}</h3>
-                    <p className="text-[9px] uppercase tracking-widest text-neutral-400">{app.name} • Applied {app.appliedDate}</p>
+              <div key={app.id} className="flex flex-col md:flex-row md:items-center justify-between p-4 md:p-6 bg-medimoi-bg border border-medimoi-black/5 gap-3">
+                <div className="flex items-center space-x-4 md:space-x-6 min-w-0">
+                  <img src={app.image} className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover grayscale shrink-0" alt="" />
+                  <div className="min-w-0">
+                    <h3 className="font-serif text-base md:text-xl italic truncate">{app.clinicName}</h3>
+                    <p className="text-[9px] uppercase tracking-widest text-neutral-400 truncate">{app.name} • Applied {app.appliedDate}</p>
                   </div>
                 </div>
-                <button 
+                <button
                   onClick={() => setSelectedApp(app)}
-                  className="px-6 py-2 border border-medimoi-black text-[9px] uppercase tracking-widest font-bold hover:bg-medimoi-black hover:text-white transition-all"
+                  className="px-5 py-2 border border-medimoi-black text-[9px] uppercase tracking-widest font-bold hover:bg-medimoi-black hover:text-white transition-all self-end md:self-auto shrink-0"
                 >
                   Review
                 </button>
@@ -91,9 +91,9 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         {/* Global Booking Map Placeholder */}
-        <div className="bg-white border border-medimoi-black/5 p-10">
-          <div className="flex items-center justify-between mb-10 border-b border-neutral-100 pb-8">
-            <h2 className="font-serif text-3xl italic">Demand Heatmap</h2>
+        <div className="bg-white border border-medimoi-black/5 p-4 md:p-8 lg:p-10">
+          <div className="flex items-center justify-between mb-6 md:mb-10 border-b border-neutral-100 pb-4 md:pb-8">
+            <h2 className="font-serif text-xl md:text-3xl italic">Demand Heatmap</h2>
             <div className="flex items-center text-[10px] uppercase tracking-widest font-bold text-neutral-400">
               <Map size={14} className="mr-2" /> London, UK
             </div>

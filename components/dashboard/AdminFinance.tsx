@@ -20,27 +20,27 @@ const AdminFinance: React.FC = () => {
   ];
 
   return (
-    <div className="flex-1 p-12 overflow-y-auto no-scrollbar bg-medimoi-bg">
-      <header className="mb-16 flex justify-between items-end">
+    <div className="flex-1 p-4 md:p-8 lg:p-12 overflow-y-auto no-scrollbar bg-medimoi-bg">
+      <header className="mb-8 md:mb-16 flex flex-col md:flex-row justify-between md:items-end gap-4">
         <div>
-          <h1 className="font-serif text-5xl italic mb-4">Financial Ledger.</h1>
+          <h1 className="font-serif text-3xl md:text-5xl italic mb-2 md:mb-4">Financial Ledger.</h1>
           <p className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">Commission tracking & platform performance</p>
         </div>
-        <button className="flex items-center space-x-3 text-[10px] uppercase tracking-widest font-bold border border-medimoi-black px-6 py-3 hover:bg-medimoi-black hover:text-white transition-all">
+        <button className="flex items-center space-x-3 text-[10px] uppercase tracking-widest font-bold border border-medimoi-black px-5 py-2.5 md:px-6 md:py-3 hover:bg-medimoi-black hover:text-white transition-all self-start md:self-auto">
           <Download size={14} />
           <span>Export Report</span>
         </button>
       </header>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-16">
         {stats.map((stat, i) => (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
             key={stat.label} 
-            className={`p-10 border border-medimoi-black/5 ${stat.highlight ? 'bg-medimoi-black text-white' : 'bg-white'}`}
+            className={`p-6 md:p-10 border border-medimoi-black/5 ${stat.highlight ? 'bg-medimoi-black text-white' : 'bg-white'}`}
           >
             <stat.icon className={`${stat.highlight ? 'text-medimoi-gold' : 'text-neutral-300'} mb-8`} size={24} />
             <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-2">{stat.label}</p>
@@ -55,8 +55,8 @@ const AdminFinance: React.FC = () => {
       </div>
 
       {/* Revenue Chart Placeholder */}
-      <section className="bg-white border border-medimoi-black/5 p-10 mb-16">
-        <div className="flex items-center justify-between mb-12">
+      <section className="bg-white border border-medimoi-black/5 p-4 md:p-8 lg:p-10 mb-8 md:mb-16">
+        <div className="flex items-center justify-between mb-6 md:mb-12">
           <h2 className="font-serif text-2xl italic">Monthly Performance</h2>
           <div className="flex space-x-4">
             {['Weekly', 'Monthly', 'Yearly'].map(t => (
@@ -66,14 +66,14 @@ const AdminFinance: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="h-48 flex items-end justify-between px-4">
+        <div className="h-48 flex items-end justify-between px-1 md:px-4 overflow-x-auto">
           {[40, 65, 45, 80, 55, 70, 90, 60, 75, 85, 95, 100].map((h, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ height: 0 }}
               animate={{ height: `${h}%` }}
               transition={{ delay: i * 0.05, duration: 1 }}
-              className="w-8 bg-medimoi-bg border-t-2 border-medimoi-gold relative group"
+              className="w-4 md:w-8 bg-medimoi-bg border-t-2 border-medimoi-gold relative group shrink-0"
             >
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-medimoi-black text-white px-2 py-1 text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">
                 £{h * 100}
@@ -81,26 +81,27 @@ const AdminFinance: React.FC = () => {
             </motion.div>
           ))}
         </div>
-        <div className="flex justify-between mt-6 px-4">
+        <div className="flex justify-between mt-6 px-1 md:px-4">
           {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(m => (
-            <span key={m} className="text-[9px] uppercase tracking-widest text-neutral-300">{m}</span>
+            <span key={m} className="text-[7px] md:text-[9px] uppercase tracking-wider md:tracking-widest text-neutral-300">{m}</span>
           ))}
         </div>
       </section>
 
       {/* Transactions Table */}
-      <section className="bg-white border border-medimoi-black/5 p-10">
-        <div className="flex items-center justify-between mb-10 border-b border-neutral-100 pb-8">
-          <h2 className="font-serif text-3xl italic">Recent Transactions</h2>
+      <section className="bg-white border border-medimoi-black/5 p-4 md:p-8 lg:p-10">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 md:mb-10 border-b border-neutral-100 pb-4 md:pb-8 gap-4">
+          <h2 className="font-serif text-xl md:text-3xl italic">Recent Transactions</h2>
           <div className="flex items-center space-x-4">
             <div className="flex items-center border border-neutral-100 px-4 py-2 bg-neutral-50/50">
               <Search size={14} className="text-neutral-300 mr-3" />
-              <input type="text" placeholder="FILTER BY CLINIC..." className="bg-transparent text-[9px] uppercase tracking-widest focus:outline-none w-48" />
+              <input type="text" placeholder="FILTER BY CLINIC..." className="bg-transparent text-[9px] uppercase tracking-widest focus:outline-none w-full md:w-48" />
             </div>
           </div>
         </div>
 
-        <table className="w-full text-left">
+        <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
+        <table className="w-full text-left min-w-[600px]">
           <thead>
             <tr className="border-b border-neutral-100">
               <th className="pb-6 text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-bold">Date</th>
@@ -130,6 +131,7 @@ const AdminFinance: React.FC = () => {
             ))}
           </tbody>
         </table>
+        </div>
       </section>
     </div>
   );

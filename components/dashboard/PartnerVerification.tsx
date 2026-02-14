@@ -20,9 +20,9 @@ const PartnerVerification: React.FC = () => {
   const isFullyVerified = docs.every(d => d.status === 'approved');
 
   return (
-    <div className="flex-1 p-12 overflow-y-auto no-scrollbar bg-medimoi-bg">
-      <header className="mb-16">
-        <h1 className="font-serif text-5xl italic mb-4">Verification Portal.</h1>
+    <div className="flex-1 p-4 md:p-8 lg:p-12 overflow-y-auto no-scrollbar bg-medimoi-bg">
+      <header className="mb-8 md:mb-16">
+        <h1 className="font-serif text-3xl md:text-5xl italic mb-2 md:mb-4">Verification Portal.</h1>
         <p className="text-[11px] uppercase tracking-[0.3em] text-neutral-400">Maintaining professional clinical standards</p>
       </header>
 
@@ -30,7 +30,7 @@ const PartnerVerification: React.FC = () => {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-amber-50 border border-amber-100 p-8 flex items-start space-x-6 mb-16"
+          className="bg-amber-50 border border-amber-100 p-4 md:p-8 flex flex-col md:flex-row items-start gap-4 md:space-x-6 mb-8 md:mb-16"
         >
           <ShieldAlert className="text-amber-600 shrink-0" size={24} />
           <div className="flex-1">
@@ -39,13 +39,13 @@ const PartnerVerification: React.FC = () => {
               Your profile is currently <span className="font-bold">hidden from public search</span>. Our clinical board is reviewing your certifications. This usually takes 24–48 hours.
             </p>
           </div>
-          <Button variant="ghost" className="text-amber-800 border border-amber-200">View Guidelines</Button>
+          <Button variant="ghost" className="text-amber-800 border border-amber-200 shrink-0">View Guidelines</Button>
         </motion.div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
         {docs.map((doc) => (
-          <div key={doc.type} className="bg-white border border-medimoi-black/5 p-10 space-y-10 group relative">
+          <div key={doc.type} className="bg-white border border-medimoi-black/5 p-4 md:p-8 lg:p-10 space-y-6 md:space-y-10 group relative">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className={`p-4 ${doc.status === 'approved' ? 'bg-green-50 text-green-600' : 'bg-medimoi-bg text-medimoi-gold'}`}>
@@ -87,12 +87,12 @@ const PartnerVerification: React.FC = () => {
         ))}
       </div>
 
-      <section className="mt-16 bg-medimoi-black text-white p-12 space-y-8">
+      <section className="mt-8 md:mt-16 bg-medimoi-black text-white p-6 md:p-8 lg:p-12 space-y-6 md:space-y-8">
         <div className="flex items-center space-x-4">
-          <Info className="text-medimoi-gold" size={24} />
-          <h2 className="font-serif text-3xl italic">Compliance Overview</h2>
+          <Info className="text-medimoi-gold shrink-0" size={24} />
+          <h2 className="font-serif text-xl md:text-3xl italic">Compliance Overview</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
           <div className="space-y-4">
             <h4 className="text-[10px] uppercase tracking-widest font-bold text-neutral-500">Insurance Policy</h4>
             <p className="text-[11px] text-neutral-400 leading-relaxed tracking-wider uppercase">

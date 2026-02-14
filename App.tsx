@@ -88,8 +88,8 @@ const App: React.FC = () => {
       <section className="px-6 py-12 md:py-24 max-w-7xl mx-auto text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <span className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-medimoi-gold font-sans mb-4 block">Redefining London's Wellness</span>
-          <h1 className="font-serif text-4xl md:text-7xl lg:text-8xl leading-tight mb-6 italic">Wellness, delivered <br /><span className="not-italic">to your door.</span></h1>
-          <p className="font-sans text-neutral-500 text-xs md:text-base tracking-wide max-w-2xl mx-auto leading-relaxed">Medical-grade treatments, beauty experts, and recovery therapists. Book premium services anywhere in London.</p>
+          <h1 className="font-serif text-4xl md:text-7xl lg:text-8xl leading-tight mb-6 italic">Luxury wellness, <br /><span className="not-italic">curated for you.</span></h1>
+          <p className="font-sans text-neutral-500 text-xs md:text-base tracking-wide max-w-2xl mx-auto leading-relaxed">London's most trusted clinics, handpicked practitioners, and medical-grade treatments — all in one place. Discover, book, and transform.</p>
         </motion.div>
         
         <SearchBar onSearch={(postcode) => { if (postcode) setSearchPostcode(postcode); setCurrentView('services'); }} />
@@ -161,7 +161,7 @@ const App: React.FC = () => {
         </div>
         <div className="flex-1 flex flex-col">
           <ResponsiveWrapper activeView={currentView} onNavigate={(v) => setCurrentView(v)} isDashboard={true}>
-            <div className="p-4 md:p-12 h-full">
+            <div className="h-full">
               {currentView === 'therapist_dashboard' && <TherapistDashboard />}
               {currentView === 'therapist_clinic' && <ClinicSettings />}
               {currentView === 'therapist_verification' && <PartnerVerification />}
